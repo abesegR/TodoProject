@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            font-family: sans-serif;
+        }
+        h4{
+            font-weight: 500;
+        }
+    </style>
+    <title>Document</title>
+    
+</head>
+<body>
+    <!--Todo Practice 2-->
+    <h4>Todo Practice 2</h4>
+
+    <!--Input box and the adding button-->
+
+    <!--Latest addition the due date button-->
+    <input type="text" placeholder="Todo name" class="js-input-field"/>
+    <input type="date" class="js-input-dueDate">
+    <button type="button" onclick="todoAdd()">Add</button>
+
+    <!--Display area to display the todo list-->
+    <div class="displayTodo"></div>
+
+    <script>
+
+        //The object that stores all todo list
+        const todoList = [{
+            name :'wash clothes',
+            dueDate: '2022-12-22'
+        },{
+            name: 'mob the floor',
+            dueDate: '2022-12-22'
+        }];
+
+
+        //Displays the todo list stored in the object array
+        function displayTodo(){
+            //Stores the user input with html tags
+            let todoListHTML = '';
+
+            //Iterate through the object
+            for(let i = 0;i<todoList.length;i++){
+                //Stores the first object in the obj array
+                const todoObj = todoList[i];
+
+                //Separately stores name and dueDate in variables
+                const {name,dueDate} = todoObj;
+                
+                const todoHTML = 
+                `<p>
+                    ${name} ${dueDate} 
+                    <button 
+                        type="button"
+                        onclick=
+                        "
+                        todoList.splice(${i},1);
+                        displayTodo();
+                        "
+                        
+                        >Delete</button>
+                </p>`;
+
+
+                //Above code handles the delete button two
+
+                /*
+                Important
+                    In each iteration i value will be etched in each delete button.This is how it deletes the specif data only.
+                */
+
+                 
+                //adds the html added value to the variable
+                todoListHTML += todoHTML;
+            }
+
+            //displays the value inside todoListHTML variable
+            document.querySelector('.displayTodo').innerHTML = todoListHTML;
+        }
+
+        //Add the user input todo to the array
+        function todoAdd(){
+            //Storing the user input in a vaiable
+            const inputTodo = document.querySelector('.js-input-field');
+            const inputTodoValue = inputTodo.value; 
+
+            //Retriving the dueDate user entered and storing it.
+            const dueDate = document.querySelector('.js-input-dueDate').value;
+
+            //Hold the inputs temp as a object array
+            const tempObj = {
+                name:inputTodoValue,
+                dueDate:dueDate
+            };
+            
+
+            //Pushing the user input to the object array
+            todoList.push(tempObj);
+            
+            //Checking if the obj array has the value
+            console.log(todoList);
+
+
+            //Clearing the input fields
+            inputTodo.value = '';
+            document.querySelector('.js-input-dueDate').value = '';
+
+            //Runs the function to display the elements
+            displayTodo();
+        }
+    </script>
+</body>
+</html>

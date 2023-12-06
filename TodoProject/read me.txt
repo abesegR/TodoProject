@@ -1,0 +1,22 @@
+todoProject v1.0
+	- Input box
+	- Add Button
+	- Displaying todos
+	- deleteing todos
+
+todoProject v2.0
+	- Input box
+	- Add Button
+	- Displaying todos
+	- deleteing todos
+	- due date(new)
+
+todoProject v2.1
+	- Input box
+	- Add Button
+	- Displaying todos
+	- deleteing todos
+	- due date
+	- CSS added
+
+Note - Testing options and console log are also available for future testing.

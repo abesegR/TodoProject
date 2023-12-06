@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            font-family: sans-serif;
+        }
+        h4{
+            font-weight: 500;
+        }
+    </style>
+    <title>Todo v1.0</title>
+    
+</head>
+<body>
+    <!--Todo Practice 2-->
+    <h4>Todo Practice 2</h4>
+
+    <!--Input box and the adding button-->
+    <input type="text" placeholder="Todo name" class="js-input-field"/>
+    <button type="button" onclick="todoAdd()">Add</button>
+
+    <!--Display area to display the todo list-->
+    <div class="displayTodo"></div>
+
+    <script>
+
+        //The array that stores all todo list
+        const todoList = ['wash clothes','mob the floor'];
+
+
+        //Displays the todo list stored in the array
+        function displayTodo(){
+            //Stores the user input with html tags
+            let todoListHTML = '';
+
+            //Iterate through the array 
+            for(let i = 0;i<todoList.length;i++){
+                //Stores the value in the array
+                const todo = todoList[i]
+                //add html to that stored value
+                const todoHTML = 
+                `<p>
+                    ${todo} 
+                    <button 
+                        type="button"
+                        onclick=
+                        "
+                        todoList.splice(${i},1);
+                        displayTodo();
+                        "
+                        
+                        >Delete</button>
+                </p>`;
+                //Above code handles the delete button two
+
+                /*
+                Important
+                    In each iteration i value will be etched in each delete button.This is how it deletes the specif data only.
+                */
+
+                 
+                //adds the html added value to the variable
+                todoListHTML += todoHTML;
+            }
+
+            //displays the value inside todoListHTML variable
+            document.querySelector('.displayTodo').innerHTML = todoListHTML;
+        }
+
+        //Add the user input todo to the array
+        function todoAdd(){
+            //Storing the user input in a vaiable
+            const inputTodo = document.querySelector('.js-input-field');
+            const inputTodoValue = inputTodo.value; 
+
+            //Pushing the user input to the array
+            todoList.push(inputTodoValue);
+            
+            //Checking if the array has the value
+            console.log(todoList);
+
+
+            //Clearing the input field
+            inputTodo.value = '';
+
+            displayTodo();
+        }
+    </script>
+</body>
+</html>

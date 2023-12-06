@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>12a</title>
+</head>
+<body>
+    <button type="button" class="btn" onclick="add()">
+        Add
+    </button>
+
+    <button type="button" class="btn" onclick="remove()">
+        Remove
+    </button>
+    <p class="jx-test">
+        
+    </p>
+    <script>
+
+        let noOfMsg = 0;
+        let msg;
+
+        function add(){
+            noOfMsg++;
+            console.log(noOfMsg);
+            if(noOfMsg>0){
+                clearInterval(msg)
+
+                msg = setInterval(function(){
+                document.title = `(${noOfMsg}) Messages`;
+                },1000);
+            }
+        }
+
+        function remove(){
+            noOfMsg--;
+            console.log(noOfMsg);
+            if(noOfMsg==0){
+                clearInterval(msg);
+            }
+        }
+
+
+        setInterval(function(){
+            document.title = 'App';
+        },1000);
+
+
+        /*
+        const display = document.querySelector('.jx-test');
+        let i=0;
+        let timeOutId;
+
+
+        function run(){
+            i++;
+            display.innerHTML = 'Added';
+            clearTimeout(timeOutId);
+            
+
+            timeOutId = setTimeout(remove,2000);
+            console.log(i);
+
+
+        }
+
+        function remove(){
+            display.innerHTML = ' ';
+        }
+
+
+        /*
+        
+        const btn = document.querySelector('.btn');
+
+        function runA(){
+            btn.textContent = 'Loading..';
+            setTimeout(run,1000);
+        }
+        
+
+        function run(){
+            btn.textContent = 'Finished!';
+        }
+        
+
+ 
+
+
+
+
+        /*
+        function runTwice(fun){
+            fun();
+            fun();
+        }
+
+        runTwice(function(){console.log('12b')});
+
+        /*
+        let addd = function(){
+            console.log(2+3);
+        }
+
+        addd();
+        */
+    </script>
+</body>
+</html>
